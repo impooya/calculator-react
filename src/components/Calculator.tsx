@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { isValidMathEquation } from "../utils";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import "./calculator.scss";
 
 export const Calculator = () => {
   let [result, set_result] = useState("no result");
@@ -12,14 +15,16 @@ export const Calculator = () => {
     }
   }
   return (
-    <>
-      <p>result: {result}</p>
-      <input
-        type="text"
-        onChange={(e) => set_equation(e.target.value)}
-        value={equation}
-      />
-      <button onClick={onclick}>=</button>
-    </>
+    <div className="basic-calculator">
+      <h1>result: {result}</h1>
+      <div style={{ gap: "12px", display: "flex" }}>
+        <InputText
+          type="text"
+          onChange={(e) => set_equation(e.target.value)}
+          value={equation}
+        />
+        <Button onClick={onclick}>=</Button>
+      </div>
+    </div>
   );
 };
